@@ -33,7 +33,8 @@
 	  "winston": "^0.8.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "make test-cov",
+    "prepublish": "gulp build"
   },
   "repository": {
     "type": "git",
