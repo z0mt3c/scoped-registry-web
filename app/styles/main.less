@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+@import 'bootstrap/less/bootstrap.less';
+@import 'font-awesome/less/font-awesome.less';
+
+@fa-font-path: '/styles/fonts';
+@font-size-base: 14px;
+@font-size-h1: floor(@font-size-base * 1.6);
+// ~36px
+@font-size-h2: floor(@font-size-base * 1.4);
+// ~30px
+@font-size-h3: ceil(@font-size-base * 1.2);
+// ~24px
+@font-size-h4: ceil(@font-size-base * 1.1);
+// ~18px
+@font-size-h5: @font-size-base;
+@font-size-h6: ceil(@font-size-base * 0.85);
+// ~12px
+
+@import 'animate';
+@import 'notifications';
+
+body {
+}
+
+ul.dependecies {
+	padding-left: 0px;
+
+	li {
+		display: inline-block;
+		&:after {
+			content: ", ";
+		}
+		&:last-child:after {
+			content: "";
+		}
+	}
+}
+
+ul.versions.dropdown-menu {
+	min-width: 83px;
+}

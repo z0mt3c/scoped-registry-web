@@ -1,0 +1,11 @@
+{
+    "name": "marionettejs-template",
+    "version": "1.0.0",
+    "dependencies": {
+        "bootstrap": "*",
+        "modernizr": "~2.8.x",
+        "font-awesome": "~4.2.0",
+        "backbone.picky": "~0.2.0"
+    },
+    "devDependencies": {}
+}

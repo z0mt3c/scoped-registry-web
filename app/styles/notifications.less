@@ -1,0 +1,37 @@
+
+.notifications {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  width: 320px;
+  z-index: 5000;
+
+  ul.notification-list {
+    li.notification-item {
+      position: relative;
+
+      i {
+        position: absolute;
+        top: 50%;
+        margin-top: -14px;
+
+        &.icon-danger:before {
+          content: "\f06a";
+        }
+        &.icon-warning:before {
+          content: "\f071";
+        }
+        &.icon-info:before {
+          content: "\f05a";
+        }
+        &.icon-success:before {
+          content: "\f058";
+        }
+      }
+
+      .notification-body {
+        margin-left: 40px;
+      }
+    }
+  }
+}

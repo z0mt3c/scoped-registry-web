@@ -1,0 +1,64 @@
+<div class="pull-right">
+	<div class="btn-group" style="margin-top: -10px;">
+		<button type="button" class="btn btn-default">{{version.version}}</button>
+		<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+			<span class="caret"></span>
+			<span class="sr-only">Toggle Dropdown</span>
+		</button>
+		<ul class="dropdown-menu versions" role="menu">
+			{{#each versions}}
+                <li><a href="/-/static/web/#packages/{{../encodedId}}/{{version}}" data-version="{{version}}">{{version}}</a></li>
+			{{/each}}
+		</ul>
+	</div>
+</div>
+
+<h1 style="margin-bottom: 10px;">
+	{{name}}{{#if description}}
+    <small>{{description}}</small>{{/if}}
+</h1>
+
+<table class="table table-condensed">
+    <tr>
+        <th style="width: 200px;">Version:</th>
+        <td>{{version.version}}</td>
+    </tr>
+    <tr>
+        <th>Author:</th>
+        <td>{{#if version.author}}{{version.author}}{{else}}Unknown{{/if}}</td>
+    </tr>
+    <tr>
+        <th>License:</th>
+        <td>{{#if version.license}}{{version.license}}{{else}}Unknown{{/if}}</td>
+    </tr>
+    <tr>
+        <th>Published:</th>
+        <td>{{version.created}}</td>
+    </tr>
+    <tr>
+        <th>Dependencies:</th>
+        <td>
+            <ul class="dependecies">
+				{{#eachProperty version.dependencies}}
+                    <li>
+                        {{packageLink property}}
+						({{value}})</li>
+				{{/eachProperty}}
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <th>Dev-Dependencies:</th>
+        <td>
+            <ul class="dependecies">
+				{{#eachProperty version.devDependencies}}
+                    <li>{{packageLink property}} ({{value}})</li>
+				{{/eachProperty}}
+            </ul>
+        </td>
+    </tr>
+</table>
+
+<div class="well readme-region">
+	No readme available
+</div>
