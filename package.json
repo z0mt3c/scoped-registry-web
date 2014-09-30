@@ -1,6 +1,6 @@
 {
   "name": "scoped-registry-web",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Tiny web ui for scoped-registry",
   "main": "plugin/index.js",
   "dependencies": {},
@@ -53,7 +53,7 @@
   "homepage": "https://github.com/z0mt3c/scoped-registry-web",
   "browser": {
     "application": "./app/scripts/application.js",
-	  "backbone.picky": "./app/bower_components/backbone.picky/lib/backbone.picky.js",
+    "backbone.picky": "./app/bower_components/backbone.picky/lib/backbone.picky.js",
     "bootstrap.affix": "./app/bower_components/bootstrap/js/affix.js",
     "bootstrap.alert": "./app/bower_components/bootstrap/js/alert.js",
     "bootstrap.button": "./app/bower_components/bootstrap/js/button.js",
