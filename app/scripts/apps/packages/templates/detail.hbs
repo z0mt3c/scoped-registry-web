@@ -1,7 +1,7 @@
-<div class="pull-right">
-	<div class="btn-group" style="margin-top: -10px;">
+<div class="pull-right" style="margin-top: -5px;">
+	<div class="btn-group">
 		<button type="button" class="btn btn-default">{{version.version}}</button>
-		<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+		<button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
 			<span class="caret"></span>
 			<span class="sr-only">Toggle Dropdown</span>
 		</button>
@@ -14,6 +14,7 @@
 </div>
 
 <h1 style="margin-bottom: 10px;">
+    <button class="btn btn-danger" data-hook="go-back" style="margin-top:-5px;"><i class="fa fa-chevron-left"></i></button>
 	{{name}}{{#if description}}
     <small>{{description}}</small>{{/if}}
 </h1>

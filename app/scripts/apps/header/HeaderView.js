@@ -30,9 +30,20 @@ views.Headers = Marionette.CompositeView.extend({
     childView: views.Header,
     childViewContainer: 'ul',
 
+	ui: {
+		searchForm: 'form[data-hook="search"]',
+		queryInput: 'input[data-hook="query"]'
+	},
+
     events: {
-        'click a.brand': 'brandClicked'
+        'click a.brand': 'brandClicked',
+		'submit @ui.searchForm': 'search'
     },
+
+	search: function(e) {
+		e.preventDefault();
+		this.trigger('search', this.ui.queryInput.val());
+	},
 
     brandClicked: function (e) {
         e.preventDefault();

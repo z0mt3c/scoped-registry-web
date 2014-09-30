@@ -22,6 +22,10 @@ module.exports = {
             App.trigger.apply(App, trigger);
         });
 
+		headers.on('search', function(query) {
+			App.trigger('packages:search', query);
+		});
+
         App.headerRegion.show(headers);
     },
 
@@ -30,6 +34,7 @@ module.exports = {
         var headerToSelect = links.find(function (header) {
             return header.get('url') === headerUrl;
         });
+
         headerToSelect.select();
         links.trigger('reset');
     }

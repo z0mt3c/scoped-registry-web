@@ -10,11 +10,14 @@
     <div class="collapse navbar-collapse" data-toggle="collapse" data-target=".navbar-collapse.in">
         <ul class="nav navbar-nav"></ul>
         <div id="navigation-region"></div>
-        <form class="navbar-form navbar-right" role="search">
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search">
+
+        <form class="navbar-form navbar-right" role="search" data-hook="search">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search" data-hook="query">
+				<span class="input-group-btn">
+					<button class="btn btn-danger" type="submit">GO</button>
+				</span>
             </div>
-            <button type="submit" class="btn btn-danger">Submit</button>
         </form>
-    </div><!--/.nav-collapse -->
+    </div>
 </div>

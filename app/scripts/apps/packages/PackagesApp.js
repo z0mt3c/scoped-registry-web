@@ -24,19 +24,23 @@ App.module('Routers.PackagesApp', function (PackagesAppRouter, App, Backbone) {
         appRoutes: {
             'packages': 'showStart',
             'packages/:id': 'showDetail',
-            'packages/:id/:version': 'showDetail'
+            'packages/:id/:version': 'showDetail',
+            'search/:query': 'showResults'
         }
     });
 
     var API = {
         showStart: function () {
             executeAction(Controller.showStart);
-            App.trigger('packages:side:select');
             App.execute('set:active:header', '/packages');
         },
         showDetail: function (id, version) {
             executeAction(Controller.showDetail, { id: id, version: version });
-            App.trigger('packages:side:select', id);
+            App.execute('set:active:header', '/packages');
+        },
+        showResults: function (query) {
+			console.log(arguments);
+            executeAction(Controller.showResults, query);
             App.execute('set:active:header', '/packages');
         }
     };
@@ -49,6 +53,11 @@ App.module('Routers.PackagesApp', function (PackagesAppRouter, App, Backbone) {
     App.on('packages:detail', function (id, version) {
         App.navigate('/packages/' + encodeURIComponent(id) + (version ? '/' + encodeURIComponent(version) : ''));
         API.showDetail(id);
+    });
+
+    App.on('packages:search', function (query) {
+        App.navigate('/search/' + encodeURIComponent(query));
+        API.showResults(query);
     });
 
     App.addInitializer(function () {

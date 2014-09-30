@@ -2,14 +2,6 @@ var Marionette = require('backbone.marionette');
 var views = module.exports = { };
 require('bootstrap.dropdown');
 
-views.Layout = Marionette.LayoutView.extend({
-    template: require('./templates/layout.hbs'),
-    regions: {
-        sideRegion: '#md-side',
-        mainRegion: '#md-main'
-    }
-});
-
 views.Empty = Marionette.ItemView.extend({
     template: require('./templates/empty.hbs')
 });
@@ -27,6 +19,9 @@ views.Item = Marionette.LayoutView.extend({
 	},
 	regions: {
 		readmeRegion: '.readme-region'
+	},
+	triggers: {
+		'click button[data-hook="go-back"]': 'back'
 	}
 });
 
@@ -37,30 +32,24 @@ views.CollectionItem = Marionette.ItemView.extend({
     attributes: {
         href: '#'
     },
-    events: {
-        'click': 'navigate'
+    triggers: {
+        'click': 'clicked'
     },
     modelEvents: {
         'selected': 'onRender',
         'deselected': 'onRender'
     },
-    navigate: function (e) {
-        e.preventDefault();
-        this.model.select();
-    },
     onRender: function () {
         this.$el.attr('href', '/packages/' + encodeURIComponent(this.model.id));
-
-        if (this.model.selected) {
-            this.$el.addClass('active');
-        } else {
-            this.$el.removeClass('active');
-        }
     }
 });
 
 views.Collection = Marionette.CompositeView.extend({
     template: require('./templates/list.hbs'),
     childView: views.CollectionItem,
-    childViewContainer: 'div.list-group'
+    childViewContainer: 'div.list-group',
+	childViewEventPrefix: 'child',
+	emptyView: views.Empty
 });
+
+views.Results = views.Collection.extend({ template: require('./templates/results.hbs') });
