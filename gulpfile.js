@@ -17,9 +17,9 @@ var minifyCSS = require('gulp-minify-css');
 var processhtml = require('gulp-processhtml');
 
 // Utils
-var rimraf = require('gulp-rimraf');
 var livereload = require('gulp-livereload');
 var nodemon = require('gulp-nodemon');
+var del = require('del');
 
 // Configuration
 var paths = {
@@ -30,9 +30,8 @@ var paths = {
 
 var DEBUG = (process.env.DEBUG === 'true');
 
-gulp.task('clean', function () {
-    return gulp.src([paths.dist, paths.tmp], { read: false })
-        .pipe(rimraf());
+gulp.task('clean', function (cb) {
+	del([paths.dist, paths.tmp], cb);
 });
 
 gulp.task('copy', function () {
